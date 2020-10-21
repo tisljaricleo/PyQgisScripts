@@ -12,7 +12,7 @@ All speed values are made up (not measured)!
 
 '''
 
-def drawRectangles(points, speed):
+def drawRectangles(points, speed, name):
     """
     Draws a rectangle as a layer on a Qgis map.
     :param points: Four points of a rectangle [lower left, lower right, upper right, upper left].
@@ -96,7 +96,7 @@ def draw_coordinate_matrix(coordinate_matrix, speeds):
             p2 = QgsPointXY(point[4], point[5])
             p4 = QgsPointXY(point[6], point[7])
             name = str(i) + '-' + str(j)
-            drawRectangles([p1, p2, p3, p4], speeds[i][j])
+            drawRectangles([p1, p2, p3, p4], speeds[i][j], name)
 
 
 #################################################################
