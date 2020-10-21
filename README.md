@@ -21,7 +21,7 @@ This script works on Qgis 3.14.16.
 ## Scripts
 
 ### Rectangle drawing
-The script will draw a rectangles on a Qgis map. User need to define a starting GNSS point, size of a rectangles and the number of rectangles. Also the matrixs for rectangles colors must be provided. The result will be something like this:
+The script will draw a rectangles on a Qgis map. User need to define a starting GNSS point, size of a rectangles and the number of rectangles. Also the matrix for rectangles colors must be provided. The result will be something like this:
 ![Rectangles_example](https://www.dropbox.com/s/bajfy4cjx0y7kvv/QgisRectangles.JPG?dl=0&raw=1)
 
 
