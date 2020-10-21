@@ -13,6 +13,7 @@ This script works on Qgis 3.14.16.
 1. Open the Qgis application.
 2. Open the map (XYZ Tiles -> OpenStreetMap -> Add layer to project).
 3. Open the Python console in Qgis.
+4. Click 'Show editor'.
 4. Copy and paste the code in Python console.
 5. Edit the code if needed.
 6. Send a feedback. Thank you!
