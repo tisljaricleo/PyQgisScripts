@@ -12,11 +12,11 @@ All speed values are made up (not measured)!
 
 '''
 
-def drawRectangles(points, speed, name):
+def drawRectangles(points, c_value, name):
     """
     Draws a rectangle as a layer on a Qgis map.
     :param points: Four points of a rectangle [lower left, lower right, upper right, upper left].
-    :param speed: Average speed for a given rectangle.
+    :param c_value: Value for defining a color of a given rectangle.
     :return:
     """
     # Create layer.
@@ -26,8 +26,8 @@ def drawRectangles(points, speed, name):
     poly.setGeometry(QgsGeometry.fromPolygonXY([points]))
     pr.addFeatures([poly])
     # Add "Speed" attribute to layer attribute table.
-    pr.addAttributes([QgsField("Speed", QVariant.Double)])
-    attr_value = {0: speed}
+    pr.addAttributes([QgsField("c_value", QVariant.Double)])
+    attr_value = {0: c_value}
     pr.changeAttributeValues({1: attr_value})
     layer.updateFields()
     layer.updateExtents()
@@ -49,7 +49,7 @@ def drawRectangles(points, speed, name):
         symbol.symbolLayer(0).setStrokeColor(QColor(0, 0, 0, alpha=0))  # Border color
         ranges.append(QgsRendererRange(lower, upper, symbol, label))
 
-    renderer = QgsGraduatedSymbolRenderer('Speed', ranges)
+    renderer = QgsGraduatedSymbolRenderer('c_value', ranges)
     layer.setRenderer(renderer)
 
 
@@ -81,11 +81,11 @@ def create_coordinate_matrix(sp, xn, yn, lons, lats):
     return coordinate_matrix
 
 
-def draw_coordinate_matrix(coordinate_matrix, speeds):
+def draw_coordinate_matrix(coordinate_matrix, c_values):
     """
     Draws all rectangles defined by the coordinate matrix.
     :param coordinate_matrix: Matrix of GNSS points.
-    :param speeds: Matrix of speed values for every rectangle.
+    :param c_values: Matrix of color values for every rectangle.
     :return:
     """
     for i in range(0, len(coordinate_matrix)):
@@ -96,7 +96,7 @@ def draw_coordinate_matrix(coordinate_matrix, speeds):
             p2 = QgsPointXY(point[4], point[5])
             p4 = QgsPointXY(point[6], point[7])
             name = str(i) + '-' + str(j)
-            drawRectangles([p1, p2, p3, p4], speeds[i][j], name)
+            drawRectangles([p1, p2, p3, p4], c_values[i][j], name)
 
 
 #################################################################
@@ -135,7 +135,7 @@ sm = [[0, 20, 50, 0, 3],
 # Draw rectangles on the map.
 #################################################################
 draw_coordinate_matrix(coordinate_matrix=cm,
-                       speeds=sm)
+                       c_values=sm)
 
 
 
