@@ -27,7 +27,7 @@ def drawRectangles(points, c_value, name):
     pr.addFeatures([poly])
     # Add "Speed" attribute to layer attribute table.
     pr.addAttributes([QgsField("c_value", QVariant.Double)])
-    attr_value = {0: c_value}
+    attr_value = {0: int(c_value)}
     pr.changeAttributeValues({1: attr_value})
     layer.updateFields()
     layer.updateExtents()
